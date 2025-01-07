@@ -13,10 +13,17 @@ common warnings
 executable shake-rg
     import:           warnings
     main-is:          Main.hs
-    build-depends:    base
-                    , shake, aeson, containers, filepath, temporary, directory, time
-                    , hashable
-                    , deepseq
-                    , binary
+    build-depends:
+      aeson >= 2.2.3 && < 2.3,
+      base >= 4.20.0 && < 4.21,
+      deepseq >= 1.5.0 && < 1.6,
+      containers >= 0.7 && < 0.8,
+      hashable >= 1.5.0 && < 1.6,
+      filepath >= 1.5.2 && < 1.6,
+      binary >= 0.8.9 && < 0.9,
+      directory >= 1.3.8 && < 1.4,
+      time >= 1.12.2 && < 1.13,
+      shake >= 0.19.8 && < 0.20,
+      temporary >= 1.3 && < 1.4,
     hs-source-dirs:   app
     default-language: Haskell2010
