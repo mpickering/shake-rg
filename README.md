@@ -1,3 +1,5 @@
+Requires GHC-9.10.1.
+
 To run everything
 
 ```

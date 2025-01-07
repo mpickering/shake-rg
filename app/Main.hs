@@ -68,7 +68,6 @@ instance ToJSON Event where
 
 
 data WorldFile = WorldFile { a,b,c, d,e,f :: Float
-                           , constructor, getLat, getLon, getX, getY :: String
                            , valid :: Bool
                            , projection :: String
                            }
@@ -84,21 +83,11 @@ instance FromJSON WorldFile where
               <*> v .: "D"
               <*> v .: "E"
               <*> v .: "F"
-              <*> v .: "Constructor"
-              <*> v .: "getLat"
-              <*> v .: "getLon"
-              <*> v .: "getX"
-              <*> v .: "getY"
               <*> v .: "valid"
               <*> v .: "proj"
 
 instance ToJSON WorldFile where
   toJSON WorldFile{..} = object [ "A" .= a, "B" .= b, "C" .= c, "D" .= d, "E" .= e, "F" .= f
-                                , "Constructor" .= constructor
-                                , "getLat" .= getLat
-                                , "getLon" .= getLon
-                                , "getX" .= getX
-                                , "getY" .= getY
                                 , "valid" .= valid
                                 , "proj" .= projection
                                 ]
