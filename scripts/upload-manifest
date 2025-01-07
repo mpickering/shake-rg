@@ -1,0 +1,11 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p google-cloud-sdk
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Must pass output directory'
+    exit 1
+fi
+
+echo $1
+
+gsutil cp -a public-read $1/manifest.json gs://rg-maps-raw

@@ -1,0 +1,22 @@
+cabal-version:   3.0
+name:            shake-rg
+version:         0.1.0.0
+license:         NONE
+author:          matthewtpickering@gmail.com
+maintainer:      Matthew Pickering
+build-type:      Simple
+extra-doc-files: CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+
+executable shake-rg
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:    base
+                    , shake, aeson, containers, filepath, temporary, directory, time
+                    , hashable
+                    , deepseq
+                    , binary
+    hs-source-dirs:   app
+    default-language: Haskell2010

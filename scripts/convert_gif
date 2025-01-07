@@ -1,0 +1,35 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p imagemagick -p zsh
+
+echo "Starting convert_gif"
+echo $1
+echo $2
+shopt -s nullglob dotglob
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Must pass output directory'
+    exit 1
+fi
+
+for file in "$1/*.gif"
+do
+  [ ! -z $file  ] || continue
+  mogrify -type TrueColorAlpha -format png -define png:color-type=6 -path $2 $file
+done
+for file in "$1/*.jpg"
+do
+  [ ! -z $file  ] || continue
+  # Defensive in case the file is labelled a jpg but is actually a gif
+  mogrify -type TrueColorAlpha -format png -define png:color-type=6 -path $2 $file
+done
+for file in "$1/*.pgw"
+do
+  [ ! -z $file  ] || continue
+  cp $file $2
+done
+for file in "$1/*.prj"
+do
+  [ ! -z $file  ] || continue
+  cp $file $2
+done
+

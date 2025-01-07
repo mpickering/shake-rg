@@ -1,0 +1,14 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p xorg.lndir
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Must pass output directory'
+    exit 1
+fi
+
+echo $1
+
+mkdir -p $1
+for dir in "${@:2}"; do
+  lndir -silent "$(realpath $dir)" "$1/"
+done
